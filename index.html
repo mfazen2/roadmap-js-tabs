@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tabs</title>
+
+    <style>
+        /* tab component container*/
+        .tab-container {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: .8vw;
+            margin: 10px auto;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+
+        /* Flexbox bar to hold tab links*/
+
+        .tab-menu {
+            display: flex;
+            background-color: #5e73b9;
+            border-bottom: 1px solid #ccc;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* tab button styling*/
+
+        .tab-button {
+            background-color: inherit;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 20px;
+            transition: 0.3s;
+            font-size: 16px;
+            font-weight: bold;
+            color: #f8f8f8;
+        }
+
+        .tab-button:hover {
+            background-color: #ddd;
+        }
+        .tab-button.active {
+            background-color: #fff;
+            color: #000;
+            border-bottom: 2px solid #007BFF;
+        }
+
+        /* tab content panel styling*/
+        .tab-panel {
+
+            display: none;
+            padding: 10px;
+            border-top: none;
+            animation: fadeEffect 0.3s;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+
+
+<body> 
+        <div class="tab-menu">
+            <button class="tab-button active" onclick="tabChange(event,'HTML')">HTML</button>
+            <button class="tab-button" onclick="tabChange(event, 'CSS')">CSS</button>
+            <button class="tab-button" onclick="tabChange(event, 'JavaScipt')">JavaScipt</button>
+        </div>
+
+        <div class="tab-container">
+            <div id="HTML" class="tab-panel active">
+                <h3>HTML</h3>
+                <p>HTML is a programming/markdown language for constructing webpages.</p>
+            </div>
+            
+            <div id="CSS" class="tab-panel">
+                <h3>CSS</h3>
+                <p>CSS is a styling language used to influence the look of webpages and webpage components.</p>
+            </div>
+            
+            <div id="JavaScipt" class="tab-panel">
+                <h3>JavaScipt</h3>
+                <p>JavaScipt is a scripting language originally used to make dynamic webpages, but is now also used on the backend.
+                </p>
+            </div>
+        </div>
+        
+    <script>
+        function tabChange(event,tabId){
+            // hide all panels, remove active class from all tab buttons
+            const panels = document.querySelectorAll('.tab-panel')
+            panels.forEach(panel => panel.classList.remove('active'))
+
+            const buttons = document.querySelectorAll('.tab-button')
+            buttons.forEach(button => button.classList.remove('active'))
+
+            document.getElementById(tabId).classList.add('active')
+            event.currentTarget.classList.add('active')
+        }
+    </script>
+
+</body>
+        
+</html>
